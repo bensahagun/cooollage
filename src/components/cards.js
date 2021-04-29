@@ -3,7 +3,10 @@ import Loading from '../loading.svg';
 
 export default function Cards({ children, ...rest }) {
   return (
-    <section id='canvas' className='w-full relative ring-4 ring-white h-600px overflow-hidden bg-white ' {...rest}>
+    <section
+      id='canvas'
+      className='w-full relative border-2 border-b-4 border-white h-600px overflow-hidden bg-white '
+      {...rest}>
       {children}
     </section>
   );
