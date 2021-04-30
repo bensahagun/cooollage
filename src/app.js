@@ -34,11 +34,13 @@ export default function App() {
       imagesLoaded('#frame', {}, () => {
         gallery.layout();
         setIsLoading(false);
-        scrollToElement('#frame', {
-          offset: -20,
-          ease: 'linear',
-          duration: 300
-        });
+
+        !isDemoMode &&
+          scrollToElement('#frame', {
+            offset: -20,
+            ease: 'linear',
+            duration: 300
+          });
       });
     }
   }, [gallery]);
@@ -61,19 +63,17 @@ export default function App() {
 
     searchInput && setIsLoading(true);
 
-    searchInput &&
-      collage(searchInput, () => {
-        setIsDemoMode(false);
-      });
+    setIsDemoMode(false);
+
+    searchInput && collage(searchInput, () => {});
   };
 
   const handleTagClick = ({ tag }) => {
     tag && setIsLoading(true);
 
-    tag &&
-      collage(tag, () => {
-        setIsDemoMode(false);
-      });
+    setIsDemoMode(false);
+
+    tag && collage(tag, () => {});
   };
 
   return (
