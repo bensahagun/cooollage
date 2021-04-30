@@ -41,9 +41,9 @@ export default function App() {
             ease: 'linear',
             duration: 300
           });
-        // eslint-disable-line react-hooks/exhaustive-deps
       });
     }
+    // eslint-disable-line react-hooks/exhaustive-deps
   }, [gallery]);
 
   const collage = (keyword, callback) => {
