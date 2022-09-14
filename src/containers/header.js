@@ -1,15 +1,13 @@
-import React from 'react';
-import Particles from 'react-particles-js';
-import { Header, Search, Badge } from '../components/';
+import React from "react";
+import { Header, Search, Badge } from "../components/";
 
-import particles from '../fixtures/particles.json';
-import tags from '../fixtures/tags.json';
+import particles from "../fixtures/particles.json";
+import tags from "../fixtures/tags.json";
 
 export default function HeaderContainer({ handleTagClick, handleFormSubmit, setSearchInput }) {
   return (
     <>
-      <Particles params={particles} className='absolute z-0 w-full h-full top-0' />
-      <Badge src='/icons/github.png' to={process.env.REACT_APP_REPO_URL} />
+      <Badge src='/icons/github.png' to='https://github.com/bensahagun/cooollage' />
       <Header>
         <Header.Title>
           <h1 className='text-6xl font-serif mb-1 text-white text-shadow-sm'>Cooollage</h1>
@@ -21,7 +19,8 @@ export default function HeaderContainer({ handleTagClick, handleFormSubmit, setS
               <button
                 key={i}
                 className='hover:bg-white hover:text-gray-600 px-3 py-1 mr-1 mt-1 text-sm rounded-sm bg-gray-600 text-white ease-linear transition-all focus:outline-none shadow-md'
-                onClick={() => handleTagClick({ tag })}>
+                onClick={() => handleTagClick({ tag })}
+              >
                 {tag}
               </button>
             ))}
@@ -33,7 +32,8 @@ export default function HeaderContainer({ handleTagClick, handleFormSubmit, setS
                 className=' py-2 px-3 focus:outline-none text-lg w-3/5 h-12'
                 type='text'
                 placeholder='Try something like "Animals"...'
-                onChange={({ target }) => setSearchInput(target.value)}></input>
+                onChange={({ target }) => setSearchInput(target.value)}
+              ></input>
               <button className='py-2 px-3 bg-blue-200 text-gray h-12 align-top focus:outline-none' type='submit'>
                 Go! ⚡
               </button>

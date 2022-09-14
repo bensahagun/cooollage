@@ -4,6 +4,10 @@
 
 Demo: https://cooollage.netlify.app/
 
-This application was built using React, Unsplash & Styled Components. It's a single page application that uses Unsplash API and Masonry to create a collage. This app follows compound components pattern and styled with TailwindCSS. 
+This application was built using React, Unsplash & Styled Components. It's a single page application that uses Unsplash API and Masonry to create a collage. This app follows compound components pattern and styled with TailwindCSS.
 
 ![Cooollage](https://github.com/bensahagun/cooollage/raw/main/preview.png?raw=true)
+
+### How to run
+
+1. Set `REACT_APP_UNSPLASH_CLIENT_ID` environment variable
