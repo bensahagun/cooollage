@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useCallback } from "react";
+import Particles from "react-tsparticles";
 import { Header, Search, Badge } from "../components/";
 
 import particles from "../fixtures/particles.json";
 import tags from "../fixtures/tags.json";
+import { loadSnowPreset } from "tsparticles-preset-snow";
 
 export default function HeaderContainer({ handleTagClick, handleFormSubmit, setSearchInput }) {
+  const particlesInit = useCallback(async (engine) => {
+    await loadSnowPreset(engine);
+  }, []);
+
   return (
     <>
-      <Badge src='/icons/github.png' to='https://github.com/bensahagun/cooollage' />
+      <Particles init={particlesInit} options={particles} className='absolute z-0 w-full h-full top-0' />
+      <Badge src='/icons/github.png' to={process.env.REACT_APP_REPO_URL} />
       <Header>
         <Header.Title>
           <h1 className='text-6xl font-serif mb-1 text-white text-shadow-sm'>Cooollage</h1>

@@ -1,17 +1,17 @@
-import React from 'react';
-import { useEffect, useState, createContext } from 'react';
-import Masonry from 'masonry-layout';
-import imagesLoaded from 'imagesloaded';
-import scrollToElement from 'scroll-to-element';
+import React from "react";
+import { useEffect, useState, createContext } from "react";
+import Masonry from "masonry-layout";
+import imagesLoaded from "imagesloaded";
+import scrollToElement from "scroll-to-element";
 
-import { Unsplash } from './lib/unsplash';
-import HeaderContainer from './containers/header';
-import GalleryContainer from './containers/gallery';
+import { Unsplash } from "./lib/unsplash";
+import HeaderContainer from "./containers/header";
+import GalleryContainer from "./containers/gallery";
 
 export const StateContext = createContext(null);
 
 export default function App() {
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState("");
   const [images, setImages] = useState([]);
   const [gallery, setGallery] = useState(null);
 
@@ -19,11 +19,11 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    Unsplash.search.getPhotos({ query: 'trending', per_page: 50 }).then(({ response }) => {
+    Unsplash.search.getPhotos({ query: "trending", per_page: 50 }).then(({ response }) => {
       setImages(response.results.sort(() => Math.random() - 0.5));
       setGallery(
-        new Masonry('#canvas .frame', {
-          initLayout: false
+        new Masonry("#canvas .frame", {
+          initLayout: false,
         })
       );
     });
@@ -31,27 +31,26 @@ export default function App() {
 
   useEffect(() => {
     if (gallery) {
-      imagesLoaded('#frame', {}, () => {
+      imagesLoaded("#frame", {}, () => {
         gallery.layout();
         setIsLoading(false);
 
         !isDemoMode &&
-          scrollToElement('#frame', {
+          scrollToElement("#frame", {
             offset: -20,
-            ease: 'linear',
-            duration: 300
+            ease: "linear",
+            duration: 300,
           });
       });
     }
-    // eslint-disable-line react-hooks/exhaustive-deps
-  }, [gallery]);
+  }, [gallery, isDemoMode]);
 
   const collage = (keyword, callback) => {
     Unsplash.search.getPhotos({ query: keyword, per_page: 30 }).then(({ response }) => {
       setImages(response.results.sort(() => Math.random() - 0.5));
       setGallery(
-        new Masonry('#canvas .frame', {
-          initLayout: false
+        new Masonry("#canvas .frame", {
+          initLayout: false,
         })
       );
 
